@@ -1,5 +1,13 @@
-import React from 'react';
+import React, {useState} from 'react';
 
-export default function App({ children }) {
-  return children;
+export const ThemeContext = React.createContext(null);
+
+export default function App({children}) {
+  const [isDark, setDark] = useState(false);
+
+  return (
+    <ThemeContext.Provider value={[isDark, setDark]}>
+      {children}
+    </ThemeContext.Provider>
+  );
 }
